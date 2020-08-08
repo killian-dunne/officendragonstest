@@ -1,0 +1,43 @@
+.card p {
+  color: grey;
+}
+
+.card {
+  margin: 20px;
+}
+
+.companies {
+  margin-top: 100px;
+}
+
+nav img {
+  max-height: 70px;
+}
+
+.card li {
+  list-style-type: none;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 17px;
+  color: grey;
+}
+
+/* 
+#ff9aa2
+#ffb7b2
+#ffdac1
+#e2f0cb
+#b5ead7
+#c7ceea
+*/
+.card li.first {
+  background-color: #ff9aa2;
+}
+
+.card li.second {
+  background-color: #ffdac1;
+}
+
+.card li.third {
+  background-color: #b5ead7;
+}
