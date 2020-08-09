@@ -14,6 +14,41 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [
-    'uses' => 'CompanyController@getIndex',
-    'as' => 'company.index'
+    'uses' => 'CompanyController@index',
+    'as' => 'company.index',
+    'middleware' => 'auth'
 ]);
+
+Route::group(['prefix' => 'user'], function() {
+    Route::group(['middleware' => 'guest'], function() {
+        Route::get('/signup', [
+            'uses' => 'UserController@getSignup', 
+            'as' => 'user.signup',
+        ]);
+        
+        Route::post('/signup', [
+            'uses' => 'UserController@postSignup', 
+            'as' => 'user.signup'
+        ]);
+        
+        Route::get('/signin', [
+            'uses' => 'UserController@getSignin', 
+            'as' => 'user.signin'
+        ]);
+        
+        Route::post('/signin', [
+            'uses' => 'UserController@postSignin', 
+            'as' => 'user.signin'
+        ]);
+    });
+    
+    
+    Route::get('/logout', [
+        'uses' => 'UserController@getLogout', 
+        'as' => 'user.logout',
+        'middleware' => 'auth'
+    ]);
+});
+
+Route::resource('company', 'CompanyController');
+

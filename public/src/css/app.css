@@ -6,18 +6,23 @@
   margin: 20px;
 }
 
-.companies {
-  margin-top: 100px;
-}
-
 nav img {
   max-height: 70px;
 }
 
+#parent {
+  margin-top: 100px;
+}
+
 .card li {
   list-style-type: none;
-  padding: 5px;
   margin: 10px;
+}
+
+
+.card li div{
+  display: inline;
+  padding: 5px;
   border-radius: 17px;
   color: grey;
 }
@@ -30,14 +35,14 @@ nav img {
 #b5ead7
 #c7ceea
 */
-.card li.first {
+.card li.first div{
   background-color: #ff9aa2;
 }
 
-.card li.second {
+.card li.second div{
   background-color: #ffdac1;
 }
 
-.card li.third {
+.card li.third div{
   background-color: #b5ead7;
 }

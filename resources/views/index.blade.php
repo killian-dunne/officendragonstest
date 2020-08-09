@@ -1,6 +1,6 @@
 @extends('layouts.home')
 
-@section('index')
+@section('content')
   <div class="companies">
     @foreach($companies as $company)
     <div class="card">
@@ -11,9 +11,13 @@
             <p>{{ $company->description}}</p>
           </div>
           <ul class="d-flex flex-column">
-            <li class="first">Big</li>
-            <li class="second">British</li>
-            <li class="third">Premium</li>
+            <li class="first">
+              <div>Big</div>
+            </li>
+            <li class="second">
+              <div>British</div>
+            </li>
+            <li class="third"><div>Premium</div></li>
           </ul>
         </div>
         
