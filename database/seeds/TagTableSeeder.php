@@ -69,7 +69,7 @@ class TagTableSeeder extends Seeder
         $tag->save();
 
         $tag = new \App\Tag([
-            'text' => 'gola',
+            'text' => 'gold',
             'category' => 'Subscription'
         ]); 
         $tag->save();

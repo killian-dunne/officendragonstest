@@ -51,4 +51,6 @@ Route::group(['prefix' => 'user'], function() {
 });
 
 Route::resource('company', 'CompanyController');
+Route::get('company/destroy/{id}', 'CompanyController@destroy');
+
 

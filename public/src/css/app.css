@@ -1,3 +1,7 @@
+form {
+  color: grey;
+}
+
 .card p {
   color: grey;
 }
@@ -20,7 +24,7 @@ nav img {
 }
 
 
-.card li div{
+.tag {
   display: inline;
   padding: 5px;
   border-radius: 17px;
@@ -35,14 +39,19 @@ nav img {
 #b5ead7
 #c7ceea
 */
-.card li.first div{
+.category:nth-child(1) .tag {
   background-color: #ff9aa2;
 }
 
-.card li.second div{
+.category:nth-child(2) .tag {
   background-color: #ffdac1;
 }
 
-.card li.third div{
+.category:nth-child(3) .tag {
   background-color: #b5ead7;
+}
+
+.modal .tag {
+  margin-left: 10px;
+  margin-right: 10px; 
 }

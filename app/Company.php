@@ -12,6 +12,6 @@ class Company extends Model
     ];
 
     public function tags() {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Tag::class);
     }
 }

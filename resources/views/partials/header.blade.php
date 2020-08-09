@@ -11,7 +11,7 @@
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="https://www.officeanddragons.com/">Link</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,9 +30,9 @@
       </ul>
 
       @if(Auth::check()) 
-        <button class="btn btn-primary">Add Company</button>
+        <a role="button" class="btn btn-primary" href="/company/create">Add Company</a>
       @else
-        <button class="btn btn-primary" disabled>Add Company</button>
+        <a role="button" class="btn btn-primary" href="/company/create" disabled>Add Company</a>
       @endif
     </div>
   </div>

@@ -13,6 +13,7 @@
 <body>
   @include('partials.header')
   <div id="parent" class="container">
+    @include('inc.messages')
     @yield('content')
   </div>
 
