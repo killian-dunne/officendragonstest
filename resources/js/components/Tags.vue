@@ -45,7 +45,7 @@ export default {
         this.loadTags();
     },
     watch: {
-        id: function() {
+        id: function() { // Triggered when add tags is clicked.
             this.company_tag_ids.push(...this.companyTags.map(tag => tag.id));
             for (let id of this.company_tag_ids) {
                 Vue.set(this.tagOpacities, id, 'solid');
@@ -53,7 +53,7 @@ export default {
         }
     },
     methods: {
-        loadTags: function() {
+        loadTags: function() { // get all of the tags (including those not selected)
             axios.get('/api/tag')
             .then(response => {
                 this.categories = response.data;
@@ -63,12 +63,11 @@ export default {
             });
         },
         handleClick: function(id) {
-            if (this.company_tag_ids.includes(id)) {
-
+            if (this.company_tag_ids.includes(id)) { // If the tag is already selected (remove it)
                 let idx = this.company_tag_ids.indexOf(id);
                 this.company_tag_ids.splice(idx, 1);
                 this.tagOpacities[id] = '';
-            } else {
+            } else { // The tag is not selected (add it).
                 // Check does this category already have another tag
                 let otherTag;
                 for (let key in this.categories) {
@@ -76,7 +75,7 @@ export default {
                         otherTag = this.categories[key].map(tag => tag.id).filter(tagId => this.company_tag_ids.includes(tagId));
                     }
                 }
-                if (otherTag[0]) { // There is another tag. Remove it.
+                if (otherTag[0]) { // There is another tag in this category. Remove it.
                     let idx = this.company_tag_ids.indexOf(otherTag[0]);
                     this.company_tag_ids.splice(idx, 1);
                     this.tagOpacities[otherTag[0]] = '';
@@ -85,7 +84,7 @@ export default {
                 Vue.set(this.tagOpacities, id, 'solid');
             }
         },
-        updateTags(id) {
+        updateTags(id) { // Send the update to the DB.
             axios.post(`/api/${id}/tags`, {tags: this.company_tag_ids})
             .then(response => {
                 this.company_tag_ids = [];

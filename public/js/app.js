@@ -2271,6 +2271,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     id: function id() {
       var _this$company_tag_ids;
 
+      // Triggered when add tags is clicked.
       (_this$company_tag_ids = this.company_tag_ids).push.apply(_this$company_tag_ids, _toConsumableArray(this.companyTags.map(function (tag) {
         return tag.id;
       })));
@@ -2294,6 +2295,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     loadTags: function loadTags() {
       var _this = this;
 
+      // get all of the tags (including those not selected)
       axios.get('/api/tag').then(function (response) {
         _this.categories = response.data;
       })["catch"](function (err) {
@@ -2304,10 +2306,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var _this2 = this;
 
       if (this.company_tag_ids.includes(id)) {
+        // If the tag is already selected (remove it)
         var idx = this.company_tag_ids.indexOf(id);
         this.company_tag_ids.splice(idx, 1);
         this.tagOpacities[id] = '';
       } else {
+        // The tag is not selected (add it).
         // Check does this category already have another tag
         var otherTag;
 
@@ -2325,7 +2329,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }
 
         if (otherTag[0]) {
-          // There is another tag. Remove it.
+          // There is another tag in this category. Remove it.
           var _idx = this.company_tag_ids.indexOf(otherTag[0]);
 
           this.company_tag_ids.splice(_idx, 1);
@@ -2339,6 +2343,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     updateTags: function updateTags(id) {
       var _this3 = this;
 
+      // Send the update to the DB.
       axios.post("/api/".concat(id, "/tags"), {
         tags: this.company_tag_ids
       }).then(function (response) {

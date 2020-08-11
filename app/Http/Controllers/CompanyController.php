@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 class CompanyController extends Controller
 {
 
+    // All of this is in one controller
+    // because this app is so small it's easy to keep everything together
+    // but when scaling I'd add an API folder of controllers, view controllers, companies, tags, orders etc.
+
     public function home() {
         return view('company.index');
     }
@@ -24,7 +28,7 @@ class CompanyController extends Controller
         return $tags;
     }
 
-    public function company_tags() {
+    public function company_tags() { // Returns all the tags of all the companies with company ids as keys
         $companies = Company::all();
         $arr = array();
         foreach($companies as $company) {
@@ -33,7 +37,7 @@ class CompanyController extends Controller
         return $arr;
     }
 
-    public function update_tags(Request $request, $id) {
+    public function update_tags(Request $request, $id) { // Clears the previous tags and adds new tags for a given company.
         $company = Company::find($id);
         $tag_ids = $request->get('tags');
         $company->tags()->sync($tag_ids);
