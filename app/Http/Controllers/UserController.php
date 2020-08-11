@@ -22,12 +22,12 @@ class UserController extends Controller
 
         $user = new User([
             'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')) 
+            'password' => bcrypt($request->input('password'))
         ]);
         $user->save();
 
         Auth::login($user);
-        
+
         return redirect()->route('company.index');
     }
 
@@ -42,7 +42,7 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt([
-            'email' => $request->input('email'), 
+            'email' => $request->input('email'),
             'password' => $request->input('password')
             ])) {
             return redirect()->route('company.index');

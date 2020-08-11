@@ -2,6 +2,11 @@ form {
   color: grey;
 }
 
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
 .card p {
   color: grey;
 }
@@ -31,7 +36,7 @@ nav img {
   color: grey;
 }
 
-/* 
+/*
 #ff9aa2
 #ffb7b2
 #ffdac1
@@ -39,19 +44,32 @@ nav img {
 #b5ead7
 #c7ceea
 */
-.category:nth-child(1) .tag {
+.category .tag.Size {
   background-color: #ff9aa2;
 }
 
-.category:nth-child(2) .tag {
+.category .tag.Location {
   background-color: #ffdac1;
 }
 
-.category:nth-child(3) .tag {
+.category .tag.Subscription {
   background-color: #b5ead7;
 }
 
+
 .modal .tag {
   margin-left: 10px;
-  margin-right: 10px; 
+  margin-right: 10px;
+}
+
+.modal .tag {
+    opacity: 0.5;
+}
+
+.modal .tag.solid {
+    opacity: 1;
+}
+
+.modal .tag:hover {
+    cursor: pointer;
 }

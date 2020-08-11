@@ -8,54 +8,77 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
+
+    public function home() {
+        return view('company.index');
+    }
+
     public function index() {
         $companies = Company::orderBy('created_at', 'desc')->get();
-        $tags = Tag::all();
+        return $companies;
+    }
+
+    public function tags() {
+        $tags = Tag::orderBy('id', 'asc')->get();
         $tags = $tags->groupBy('category');
-        return view('company.index', [
-            'companies' => $companies,
-            'tags' => $tags
-            ]);
+        return $tags;
+    }
+
+    public function company_tags() {
+        $companies = Company::all();
+        $arr = array();
+        foreach($companies as $company) {
+            $arr[$company->id] = $company->tags;
+        }
+        return $arr;
+    }
+
+    public function update_tags(Request $request, $id) {
+        $company = Company::find($id);
+        $tag_ids = $request->get('tags');
+        $company->tags()->sync($tag_ids);
+        $company->save();
+        return view('company.index');
     }
 
     public function create() {
-        return view('company.create');
+        return view('company.form')->with('new', 'new');
     }
 
     public function store(Request $request) {
         $this->validate($request, [
-            'name' => 'required', 
+            'name' => 'required',
             'description' => 'required'
         ]);
-        
+
         $company = new Company;
         $company->name = $request->input('name');
         $company->description = $request->input('description');
         $company->save();
-        return redirect('/')->with('success', 'Company created'); 
+        return $company;
     }
 
     public function edit($id) {
         $company = Company::find($id);
-        return view('company.edit')->with('company', $company);
+        return view('company.form')->with('company', $company);
     }
 
     public function update(Request $request, $id) {
         $this->validate($request, [
-            'name' => 'required', 
+            'name' => 'required',
             'description' => 'required'
         ]);
-        
+
         $company = Company::find($id);
         $company->name = $request->input('name');
         $company->description = $request->input('description');
         $company->save();
-        return redirect('/')->with('success', 'Company updated');
+        return redirect('/');
     }
 
     public function destroy($id) {
         $company = Company::find($id);
         $company->delete();
-        return redirect('/')->with('success', 'Post Removed');
+        return redirect('/');
     }
 }

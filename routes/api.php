@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('company', 'CompanyController@index');
+Route::get('tag', 'CompanyController@tags');
+Route::post('{id}/tags','CompanyController@update_tags');
+Route::get('company_tags', 'CompanyController@company_tags');
+Route::post('company', 'CompanyController@store');
+Route::put('company/{id}', 'CompanyController@update');
+Route::get('company/destroy/{id}', 'CompanyController@destroy');
