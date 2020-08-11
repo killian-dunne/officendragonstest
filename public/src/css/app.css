@@ -1,0 +1,75 @@
+form {
+  color: grey;
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.card p {
+  color: grey;
+}
+
+.card {
+  margin: 20px;
+}
+
+nav img {
+  max-height: 70px;
+}
+
+#parent {
+  margin-top: 100px;
+}
+
+.card li {
+  list-style-type: none;
+  margin: 10px;
+}
+
+
+.tag {
+  display: inline;
+  padding: 5px;
+  border-radius: 17px;
+  color: grey;
+}
+
+/*
+#ff9aa2
+#ffb7b2
+#ffdac1
+#e2f0cb
+#b5ead7
+#c7ceea
+*/
+.category .tag.Size {
+  background-color: #ff9aa2;
+}
+
+.category .tag.Location {
+  background-color: #ffdac1;
+}
+
+.category .tag.Subscription {
+  background-color: #b5ead7;
+}
+
+
+.modal .tag {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.modal .tag {
+    opacity: 0.5;
+}
+
+.modal .tag.solid {
+    opacity: 1;
+}
+
+.modal .tag:hover {
+    cursor: pointer;
+}
